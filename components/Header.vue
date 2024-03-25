@@ -1,26 +1,50 @@
-<script>
+<script setup>
     import SendRequestButton from './SendRequestButton.vue';
+    import PhoneIcon from '~/assets/icons/phone.svg';
+    import LogoDark from '~/assets/icons/logo_dark.svg';
+
+    const phone = '+7 (900) 900-90-90';
+
+    const nav = [
+        { 
+            url: '/projects',
+            label: 'Реализованные проекты',
+        },
+        {
+            url: '/news',
+            label: 'Новости',
+        },
+        {
+            url: '/contacts',
+            label: 'Контакты',
+        },
+    ];
 </script>
 
 <template>
-    <header>
-        <div class="left-part">
-            <img src="~/assets/images/Group.png" class="logo">
-            <nav class="navigation">
-                <ul class="menu">
-                    <li class="menu-item"><a class="item-link" href="#">Реализованные проекты</a></li>
-                    <li class="menu-item"><a class="item-link" href="#">Новости</a></li>
-                    <li class="menu-item"><a class="item-link" href="#">Контакты</a></li>
-                </ul>
-            </nav>
-        </div>
-        <div class="right-part">
-            <div class="phone-number">
-                <img class="telephone-icon" src="~/assets/images/telephone.png">
-                <a class="number" href="#">+7 (900) 900-90-90</a>
+    <header class="main-header">
+        <div class="container">
+            <div class="left-part">
+                <LogoDark class="logo-dark" filled />
+                <nav class="navigation">
+                    <ul class="menu">
+                        <li class="menu-item" v-for="item in nav">
+                            <a class="item-link" :href="item.url">
+                                {{  item.label }}
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
-            <SendRequestButton />
-        </div>
+        
+            <div class="right-part">
+                <div class="phone-number">
+                    <PhoneIcon filled />
+                    <a class="number" :href="`tel:${ phone }`">{{ phone }}</a>
+                </div>
+                <SendRequestButton />
+            </div>
+        </div>  
     </header>
 </template>
 
@@ -33,36 +57,43 @@ $gap-inside-blocks: 24px;
     font-size: $link-font-size;
 }
 
-header {
+.main-header {
     width: 100%;
     height: 97px;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    flex-shrink: 0;
 }
 
 .left-part,
 .menu,
 .right-part,
-.phone-number {
+.phone-number,
+.container {
     display: flex;
     align-items: center;
 }
 
-.left-part {
-    height: 39px;
-    gap: 80px;
-    padding: 29px 0px 29px 88px;
+.container {
+    max-width: 1264px;
+    width: 100%;
+    padding-inline: 1rem;
+    gap: 254px;
 }
 
-.logo {
+.left-part {
+    gap: 80px;
+}
+
+.logo-dark {
     height: 39px;
+    width: 160px;
 }
 
 .menu {
     list-style-type: none;
     gap: $gap-inside-blocks;
-    height: 19px;
+    padding-left: 0px;
 }
 
 .item-link {
@@ -70,19 +101,10 @@ header {
 }
 
 .right-part {
-    height: 49px;
-    left: 878px;
     gap: $gap-inside-blocks;
-    padding: 24px 88px 24px 254px;
-}
-
-.telephone-icon {
-    width: 16px;
-    height: 16px;
 }
 
 .phone-number {
-    height: 17px;
     gap: 8px;
 }
 
