@@ -5,9 +5,11 @@
 </script>
 
 <template>
-  <Header />
-  <Main />
-  <Footer />
+  <div class="root">
+    <Header />
+    <Main />
+    <Footer />
+  </div>
 </template>
   
 <style lang="scss">
