@@ -59,15 +59,15 @@
                 </nav>
                 <ul class="contact-info">
                     <li class="contact-info-item" v-for="item in contacts">
-                        <PhoneIcon v-if="item.icon === 1" filled />
-                        <EmailIcon v-else-if="item.icon === 2" filled />
-                        <TagIcon v-else filled />
+                        <PhoneIcon class="contact-info-icon" v-if="item.icon === 1" filled />
+                        <EmailIcon class="contact-info-icon" v-else-if="item.icon === 2" filled />
+                        <TagIcon class="contact-info-icon" v-else filled />
                         <a class="contact-info-item-link" :href="item.url">
                             {{  item.label }}
                         </a>
                     </li>
                 </ul>
-                <SendRequestButton />
+                <SendRequestButton class="send-request-button" />
             </div>
             
             <div class="bottom-part">
@@ -88,12 +88,29 @@ $gap-inside-blocks: 24px;
     font-size: $link-font-size;
 }
 
+@mixin remove-margin {
+    @media (max-width: 1046px) { @content; }
+}
+
+@mixin for-phone-landscape-up {
+    @media (max-width: 840px) { @content; }
+}
+
+@mixin for-tablet-landscape-up {
+    @media (max-width: 1146px) { @content; }
+}
+
+
 .main-footer {
     display: flex;
-    justify-content: center;
     flex-shrink: 0;
     height: 246px;
     background-color: #254741;
+    width: 100%;
+
+    @include for-phone-landscape-up {
+        height: 633px;
+    }
 }
 
 .container {
@@ -102,20 +119,44 @@ $gap-inside-blocks: 24px;
     padding-inline: 1rem;
     display: flex;
     flex-direction: column;
-    margin-top: 37px;
-    margin-bottom: 33px;
+    margin: 37px 88px 33px 88px;
+
+    @include remove-margin {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    @include for-phone-landscape-up {
+        gap: 40px;
+    }
 }
 
-.top-part,
-.bottom-part
+.top-part
 {
     display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    @include for-phone-landscape-up {
+        flex-direction: column;
+        gap: 16px;
+    }
+}
+
+.bottom-part {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    @include for-phone-landscape-up {
+        flex-direction: column;
+        gap: 16px;
+    }
 }
 
 .logo-light {
     height: 39px;
     width: 160px;
-    margin-right: 154px;
 }
 
 .menu,
@@ -124,6 +165,8 @@ $gap-inside-blocks: 24px;
     gap: $gap-inside-blocks;
     display: flex;
     flex-direction: column;
+    word-break: break-word;
+    white-space: normal;
     padding-left: 0px;
 }
 
@@ -134,25 +177,29 @@ $gap-inside-blocks: 24px;
 .contact-info-item-link {
     @include link(14px);
     font-family: var(--font-title);
-}
-
-.menu {
-    width: 195px;
-    margin-right: 122px;
-}
-
-.contact-info {
-    width: 202px;
-    margin-right: 228px;
+    white-space: pre-line;
 }
 
 .contact-info-item {
     display: flex;
     gap: 8px;
+    word-break: break-word;
+    white-space: normal;
 }
 
-.bottom-part {
-    align-items: center;
+.contact-info-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.send-request-button {
+    @include for-tablet-landscape-up {
+        display: none;
+    }
+
+    @include for-phone-landscape-up {
+        display: inline-block;
+    }
 }
 
 .privacy,
@@ -169,8 +216,11 @@ $gap-inside-blocks: 24px;
     color: white;
     opacity: 60%;
     font-size: 14px;
-    width: 148px;
     margin-right: 172px;
+
+    @include for-phone-landscape-up {
+        margin-bottom: 0px;
+    }
 }
 
 </style>
