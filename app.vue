@@ -5,16 +5,29 @@
 </script>
 
 <template>
-  <Header />
-  <Main />
-  <Footer />
+  <div class="root">
+    <Header />
+    <Main />
+    <Footer />
+  </div>
 </template>
   
 <style lang="scss">
+@import '@csstools/normalize.css/opinionated.css';
+
 :root {
    --font-title: Montserrat, sans-serif;
    --font-text: Open Sans, sans-serif;
 
    font-family: var(--font-text);
+}
+
+.root {
+  display: flex;
+  flex-flow: column;
+}
+
+html, body, #__nuxt, .root {
+  height: 100%;
 }
 </style>
