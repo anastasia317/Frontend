@@ -2,6 +2,7 @@
     import SendRequestButton from './SendRequestButton.vue';
     import PhoneIcon from '~/assets/icons/phone.svg';
     import LogoDark from '~/assets/icons/logo_dark.svg';
+    import Drawer from './Drawer.vue';
 
     const phone = '+7 (900) 900-90-90';
 
@@ -43,7 +44,7 @@
                     <a class="number" :href="`tel:${ phone }`">{{ phone }}</a>
                 </div>
                 <SendRequestButton class="send-request-button" />
-                <MenuButton class="menu-button" />
+                <Drawer class="drawer" />
             </div>
         </div>  
     </header>
@@ -101,9 +102,6 @@ $gap-inside-blocks: 24px;
 
     @include for-tablet-landscape-up {
         margin-left: 0px;
-    }
-
-    @include for-tablet-landscape-up {
         margin-right: 0px;
     }
 }
@@ -162,7 +160,7 @@ $gap-inside-blocks: 24px;
     }
 }
 
-.menu-button {
+.drawer {
     display: none;
 
     @include for-phone-landscape-up {

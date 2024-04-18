@@ -45,7 +45,7 @@
 
 <template>
     <footer class="main-footer">
-        <div class="container">
+        <div class="container-footer">
             <div class="top-part">
                 <LogoLight class="logo-light" filled />
                 <nav class="navigation">
@@ -93,13 +93,16 @@ $gap-inside-blocks: 24px;
 }
 
 @mixin for-phone-landscape-up {
-    @media (max-width: 840px) { @content; }
+    @media (max-width: 820px) { @content; }
 }
 
 @mixin for-tablet-landscape-up {
     @media (max-width: 1146px) { @content; }
 }
 
+@mixin add-margin-for-items-inside-top-part {
+    @media (max-width: 1200px) { @content; }
+}
 
 .main-footer {
     display: flex;
@@ -113,12 +116,13 @@ $gap-inside-blocks: 24px;
     }
 }
 
-.container {
+.container-footer {
     max-width: 1264px;
     width: 100%;
     padding-inline: 1rem;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     margin: 37px 88px 33px 88px;
 
     @include remove-margin {
@@ -128,6 +132,10 @@ $gap-inside-blocks: 24px;
 
     @include for-phone-landscape-up {
         gap: 40px;
+    }
+
+    @include for-phone-landscape-up {
+        margin: 40px;
     }
 }
 
@@ -141,22 +149,37 @@ $gap-inside-blocks: 24px;
         flex-direction: column;
         gap: 16px;
     }
+
+    @include for-phone-landscape-up {
+        gap: 40px;
+    }
 }
 
 .bottom-part {
     display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-
+    align-items: center;
+    
     @include for-phone-landscape-up {
         flex-direction: column;
         gap: 16px;
+    }
+
+    @include for-phone-landscape-up {
+        align-items: flex-start;
     }
 }
 
 .logo-light {
     height: 39px;
     width: 160px;
+
+    @include add-margin-for-items-inside-top-part {
+        margin-right: 20px;
+    }
+
+    @include for-phone-landscape-up {
+        margin-bottom: 0px;
+    }
 }
 
 .menu,
@@ -168,6 +191,15 @@ $gap-inside-blocks: 24px;
     word-break: break-word;
     white-space: normal;
     padding-left: 0px;
+
+    @include add-margin-for-items-inside-top-part {
+        margin-right: 20px;
+    }
+
+    @include for-phone-landscape-up {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }    
 }
 
 .item-link {
@@ -189,17 +221,15 @@ $gap-inside-blocks: 24px;
 
 .contact-info-icon {
     width: 16px;
+    max-width: 16px;
+    min-width: 16px;
     height: 16px;
 }
 
 .send-request-button {
-    @include for-tablet-landscape-up {
-        display: none;
-    }
-
-    @include for-phone-landscape-up {
-        display: inline-block;
-    }
+    width: 204px;
+    max-width: 204px;
+    min-width: 204px;
 }
 
 .privacy,
@@ -217,9 +247,15 @@ $gap-inside-blocks: 24px;
     opacity: 60%;
     font-size: 14px;
     margin-right: 172px;
+    white-space: nowrap;
 
     @include for-phone-landscape-up {
         margin-bottom: 0px;
+        margin-top: 0px;
+    }
+
+    @include remove-margin {
+        margin-right: 80px;
     }
 }
 
