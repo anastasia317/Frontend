@@ -9,5 +9,6 @@ export default defineNuxtConfig({
         Montserrat: true,
       }
     }],
+    'nuxt-swiper',
   ],
 })

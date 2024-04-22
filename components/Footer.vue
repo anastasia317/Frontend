@@ -106,6 +106,7 @@ $gap-inside-blocks: 24px;
 
 .main-footer {
     display: flex;
+    justify-content: center;
     flex-shrink: 0;
     height: 246px;
     background-color: #254741;
@@ -171,7 +172,8 @@ $gap-inside-blocks: 24px;
 
 .logo-light {
     height: 39px;
-    width: 160px;
+    width: 100%;
+    max-width: 160px;
 
     @include add-margin-for-items-inside-top-part {
         margin-right: 20px;
@@ -190,7 +192,7 @@ $gap-inside-blocks: 24px;
     flex-direction: column;
     word-break: break-word;
     white-space: normal;
-    padding-left: 0px;
+    margin-left: 0px;
 
     @include add-margin-for-items-inside-top-part {
         margin-right: 20px;
@@ -220,16 +222,14 @@ $gap-inside-blocks: 24px;
 }
 
 .contact-info-icon {
-    width: 16px;
+    width: 100%;
     max-width: 16px;
-    min-width: 16px;
     height: 16px;
 }
 
 .send-request-button {
-    width: 204px;
+    width: 100%;
     max-width: 204px;
-    min-width: 204px;
 }
 
 .privacy,
