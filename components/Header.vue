@@ -81,6 +81,7 @@ $gap-inside-blocks: 24px;
     width: 100%;
     height: 97px;
     display: flex;
+    justify-content: center;
     flex-shrink: 0;
 }
 
@@ -108,15 +109,16 @@ $gap-inside-blocks: 24px;
 
 .logo-dark {
     height: 39px;
-    width: 160px;
-    padding-right: 80px;
+    width: 100%;
+    max-width: 160px;
+    margin-right: 80px;
 
     @include for-tablet-portrait-up {
-        padding-right: 24px;
+        margin-right: 24px;
     }
 
     @include for-phone-landscape-up {
-        padding-right: 0px;
+        margin-right: 0px;
     }
 }
 
@@ -131,7 +133,7 @@ $gap-inside-blocks: 24px;
 }
 
 .menu-item {
-    padding-right: $gap-inside-blocks;
+    margin-right: $gap-inside-blocks;
 }
 
 .item-link {
@@ -149,7 +151,7 @@ $gap-inside-blocks: 24px;
 .number {
     @include link(14px);
     font-family: var(--font-title);
-    padding-right: $gap-inside-blocks;
+    margin-right: $gap-inside-blocks;
 }
 
 .send-request-button {
