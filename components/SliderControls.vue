@@ -24,6 +24,10 @@ const swiper = useSwiper()
 </template>
 
 <style lang="scss" scoped>
+@mixin hide-slider-controls {
+    @media (max-width: 767px) { @content; }
+}
+
 .next, 
 .prev {
     position: absolute;
@@ -36,6 +40,10 @@ const swiper = useSwiper()
     border-radius: 10px;
     background-color: #029F59;
     cursor: pointer;
+
+    @include hide-slider-controls {
+        display: none;
+    }
 }
 
 .prev {
@@ -59,6 +67,10 @@ const swiper = useSwiper()
     z-index: 1;
     display: flex;
     gap: 16px;
+
+    @include hide-slider-controls {
+        display: none;
+    }
 }
 
 .pagination-button {

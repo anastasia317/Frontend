@@ -43,7 +43,9 @@
                     <PhoneIcon filled />
                     <a class="number" :href="`tel:${ phone }`">{{ phone }}</a>
                 </div>
-                <SendRequestButton class="send-request-button" />
+                <div class="send-request-button">
+                    <SendRequestButton />
+                </div>
                 <Drawer class="drawer" />
             </div>
         </div>  

@@ -1,7 +1,8 @@
 <script setup>
 import Slider from './Slider.vue'
-import AboutCompany from './AboutCompany.vue'
+import CompanyDescription from './CompanyDescription.vue'
 import Projects from './Projects.vue'
+import News from './News.vue'
 </script>
 
 <template>
@@ -11,14 +12,19 @@ import Projects from './Projects.vue'
                 <Slider />
             </div>
         </section>
-        <section class="about-company">
+        <section class="company-description">
             <div class="container">
-                <AboutCompany />
+                <CompanyDescription />
             </div>
         </section>
         <section class="projects">
             <div class="containter">
-                <!-- <Projects /> -->
+                <Projects />
+            </div>
+        </section>
+        <section class="news">
+            <div class="container">
+                <News />
             </div>
         </section>
     </main>
@@ -39,11 +45,13 @@ import Projects from './Projects.vue'
     max-width: 1264px;
     width: 100%;
     padding-inline: 1rem;
-    margin: 0px 88px;
 }
 
-.about-company {
-    margin-top: 80px;
+.slider,
+.company-description {
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
 .projects {
@@ -52,6 +60,6 @@ import Projects from './Projects.vue'
     width: 100%;
     background-color: #F5F7F3;
     padding-block: 80px;
-    margin-top: 120px;
+    margin-top: 80px;
 }
 </style>

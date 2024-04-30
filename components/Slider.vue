@@ -55,9 +55,9 @@ const slides = [
 </script>
 
 <template>
-    <Swiper>
-        <SwiperSlide v-for="slide in slides">
-            <figure class='swiper'>
+    <Swiper class="swiper">
+        <SwiperSlide class="swiper-slide" v-for="slide in slides">
+            <figure class='slide-frame'>
                 <picture>
                     <source
                         :srcset='`${slide.image_landscape.x2} 2x, ${slide.image_landscape.x1}`'
@@ -82,19 +82,41 @@ const slides = [
 <style lang="scss" scoped>
 @import 'sanitize.css/assets.css';
 
+@mixin for-tablet-landscape-up {
+    @media (max-width: 1046px) { @content; }
+}
+
+@mixin for-phone-portrait {
+    @media (max-width: 767px) { @content; }
+}
+
 .swiper {
-    position: relative;
-    background-color: #394959;
+    max-width: 1264px;
     width: 100%;
-    display: flex;
+    min-height: 450px;
+    margin: 40px 88px;
     border-radius: 30px;
+    background-color: #394959;
+
+    @include for-tablet-landscape-up {
+        margin: 40px 15px;
+    }
+
+    @include for-phone-portrait {
+        max-width: 391px;
+    }
+}
+
+.slide-frame {
+    position: relative;
     margin: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .slider-image {
     object-fit: cover;
     object-position: center;
-    width: 100%;
     height: 100%;
 }
 
@@ -106,18 +128,22 @@ const slides = [
     width: 100%;
     color: white;
     padding-inline: 144px;
-    padding-bottom: 113px;
+    padding-bottom: 115px;
+
+    @include for-phone-portrait {
+        max-width: 296px;
+        padding-inline: 24px;
+        padding-bottom: 30px;
+    }
 }
 
 .title-slide {
     font-family: var(--font-title);
     font-size: 46px;
     margin-bottom: 0px;
-    line-height: 55.2px;
-}
 
-.text-slide {
-    font-size: 16px;
-    line-height: 21.6px;
+    @include for-phone-portrait {
+        font-size: 30px;
+    }
 }
 </style>

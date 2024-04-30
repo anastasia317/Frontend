@@ -1,15 +1,10 @@
 <script setup lang="ts">
-import {
-  Toggle
-} from 'radix-vue'
+const dialogOpened = ref(false)
 </script>
 
 <template>
-  <Toggle
-      class="Button"
-    >
-      Оставить заявку
-  </Toggle>
+  <Dialog :open='dialogOpened' @close='dialogOpened = false' />
+   <button class="Button" @click='dialogOpened = true'>Оставить заявку</button>
 </template>
 
 <style>

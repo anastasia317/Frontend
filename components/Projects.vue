@@ -27,21 +27,33 @@ const projects = [
 </script>
 
 <template>
-        <div class='list'>
-            <Project
-                v-for='project in projects'
-                :title='project.title'
-                :description='project.description'
-                :image='project.image'
-            />
-        </div>
+    <p class="title">Реализованные проекты</p>
+    <div class='list'>
+        <Project
+            v-for='project in projects'
+            :title='project.title'
+            :description='project.description'
+            :image='project.image'
+        />
+    </div>
 </template>
 
 
 <style lang="scss" scoped>
+.title {
+    font-family: var(--font-title);
+    font-size: 38px;
+    font-weight: 700;
+    margin-left: 88px;
+    margin-top: 0px;
+}
+
 .list {
     display: grid;
+    grid-auto-flow: column;
     grid-template-columns: repeat(2, 1fr);
     overflow: auto;
+    grid-gap: 16px;
+    margin: 0px 88px; 
 }
 </style>
