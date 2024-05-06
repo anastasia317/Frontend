@@ -41,14 +41,16 @@
 
 <template>
   <div class="burger-menu">
-    <button class="burger">
+    <button class="Button">
       <Bars class="bars" filled/>
     </button>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.burger {
+@import '~/assets/styles/button.scss';
+
+.Button {
   display: inline-block;
   position: relative;
   width: 56px;

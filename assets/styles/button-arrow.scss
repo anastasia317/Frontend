@@ -1,0 +1,30 @@
+.next,
+.prev {
+    border: 1px solid #029F59;
+    background-color: #FFFFFF;
+    fill: #254741;
+
+    &:disabled {
+        border: 1px solid #D7D7D7;
+        background-color: #FAFAFA;
+        fill: #D7D7D7;
+    }
+
+    &:active {
+        border: none;
+        background-color: #029F59;
+        fill: white;
+    }
+
+    &:hover {
+        border: none;
+        background-color: #254741;
+        fill: white;
+    }
+
+    &:focus {
+        background-color: #EEEEEE;
+        border: 1px solid #9D9C9C;
+        fill: #BDBDBD;
+    }
+}

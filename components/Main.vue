@@ -18,7 +18,7 @@ import News from './News.vue'
             </div>
         </section>
         <section class="projects">
-            <div class="containter">
+            <div class="container">
                 <Projects />
             </div>
         </section>
@@ -31,6 +31,10 @@ import News from './News.vue'
 </template>
 
 <style lang="scss" scoped>
+@mixin for-tablet-landscape-up {
+    @media (max-width: 1046px) { @content; }
+}
+
 .main-content {
     display: flex;
     flex-direction: column;
@@ -45,19 +49,30 @@ import News from './News.vue'
     max-width: 1264px;
     width: 100%;
     padding-inline: 1rem;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin: 40px 80px;
+
+    @include for-tablet-landscape-up {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
 }
 
 .slider,
-.company-description {
+.company-description,
+.projects,
+.news {
     display: flex;
     justify-content: center;
     width: 100%;
 }
 
+.company-description {
+    margin-top: 80px;
+}
+
 .projects {
-    display: flex;
-    justify-content: center;
-    width: 100%;
     background-color: #F5F7F3;
     padding-block: 80px;
     margin-top: 80px;

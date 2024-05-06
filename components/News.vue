@@ -55,7 +55,7 @@ const articles = [
     <section class="news-list">
         <header class='news-list-header'>
            <h2 class='news-list-title'>Новости</h2>
-           <a href='/news' class='button'>Все новости</a>
+           <a href='/news' class='Button'>Все новости</a>
        </header>
        <ul class='news-list-list'>
            <li v-for='article in articles' class='news-list-article'>
@@ -70,9 +70,25 @@ const articles = [
 </template>
 
 <style lang="scss" scoped>
+@import '~/assets/styles/button.scss';
+
+h2 {
+    margin: 0;
+}
+
+.news-list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    width: 100%;
+    margin-top: 40px;
+}
+
 .news-list-header {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    justify-content: space-between;
+    padding-right: 16px;
+    padding-left: 16px;
 }
 
 .news-list-title {
@@ -80,18 +96,25 @@ const articles = [
     font-family: var(--font-title);
 }
 
-.button {
-    display:inline-block;
-    justify-self: end;
+.Button {
+    display: inline-block;
+    border-radius: 10px;
+    max-height: 17px;
+    max-width: 93px;
+    padding: 16px 24px;
     text-decoration: none;
-    color: #029F59;
-    border: 1px #029F59;
+    color: white;
+    font-size: 14px;
+    font-family: var(--font-title);
 }
 
 .news-list-list {
     list-style-type: none;
     display: grid;
-    grid-auto-flow: column;
     grid-template-columns: repeat(4, 1fr);
+    grid-gap: 16px;
+    overflow: auto;
+    width: 100%;
+    padding: 0;
 }
 </style>

@@ -102,10 +102,14 @@ $gap-inside-blocks: 24px;
     width: 100%;
     padding-inline: 1rem;
     margin: 24px 88px 24px 88px;
+    padding-left: 0px;
+    padding-right: 0px;
 
     @include for-tablet-landscape-up {
         margin-left: 0px;
         margin-right: 0px;
+        padding-left: 16px;
+        padding-right: 16px;
     }
 }
 

@@ -116,15 +116,19 @@ $gap-inside-blocks: 24px;
     grid-template-areas: 
     "logo navigation contacts button"
     "copyright privacy users .";  
-    grid-gap: 20px;
+    grid-gap: 32px;
     max-width: 1264px;
     width: 100%;
     padding-inline: 1rem;
     margin: 37px 88px;
+    padding-left: 0px;
+    padding-right: 0px;
 
     @include remove-margin {
         margin-left: 0px;
         margin-right: 0px;
+        padding-left: 16px;
+        padding-right: 16px;
     }
 
     @include for-phone-landscape-up {
@@ -149,10 +153,6 @@ $gap-inside-blocks: 24px;
 
     @include add-margin-for-items-inside-top-part {
         margin-right: 20px;
-    }
-
-    @include for-phone-landscape-up {
-        margin-bottom: 0px;
     }
 }
 
@@ -225,6 +225,10 @@ $gap-inside-blocks: 24px;
 .users {
     @include link(14px);
     color: rgba(white, 0.6);
+
+    @include for-phone-landscape-up {
+        margin-top: -24px;
+    }
 }
 
 .copyright {
@@ -232,14 +236,11 @@ $gap-inside-blocks: 24px;
     color: rgba(white, 0.6);
     font-size: 14px;
     white-space: nowrap;
+    margin: 0px;
 
     @include for-phone-landscape-up {
         margin-bottom: 0px;
         margin-top: 0px;
-    }
-
-    @include remove-margin {
-        margin-right: 80px;
     }
 }
 

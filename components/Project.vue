@@ -12,7 +12,7 @@ defineProps({
 <template>
     <div class='project'>
       <div class="pic">
-         <picture class="picture-frame">
+         <picture>
             <source :srcset='`${image.x2} 2x, ${image.x1}`'>
             <img :src='image.x1' :alt='title' class='image' />
          </picture>
@@ -25,27 +25,58 @@ defineProps({
  </template>
 
 <style lang="scss" scoped>
+@mixin for-tablet-landscape-up {
+    @media (max-width: 1046px) { @content; }
+}
+
+@mixin for-phone-landscape-up {
+    @media (max-width: 820px) { @content; }
+}
+
 .project {
+   background-color: white;
+   border-radius: 20px;
+   overflow: hidden;
    min-width: 200px;
+   
+   @include for-tablet-landscape-up {
+      height: 100%;
+      width: 100%;
+   }
+   
+   @include for-phone-landscape-up {
+      max-height: 453px;
+      max-width: 304px;
+      width: 100%;
+   }
 }
 
 .pic {
    display: grid;
    grid-template-columns: repeat(2, 1fr);
-   background-color: white;
-   border-radius: 20px;
    height: 100%;
+   width: 100%;
+
+   @include for-phone-landscape-up {
+      grid-template-columns: repeat(1, 1fr); 
+      grid-template-rows: 35% 65%;
+   }
 }
 
 .image {
    height: 100%;
-   max-width: 100%;
+   width: 100%;
    object-fit: cover;
 }
 
 .information {
    order: -1;
    margin: 32px;
+
+   @include for-phone-landscape-up {
+      order: 0;
+      margin: 0px 24px 24px 24px;
+   }
 }
 
 .title {

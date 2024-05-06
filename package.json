@@ -18,6 +18,7 @@
     "radix-vue": "^1.7.3",
     "reset-css": "^5.0.2",
     "sanitize.css": "^13.0.0",
+    "truncate-html": "^1.1.1",
     "vue": "^3.4.19",
     "vue-router": "^4.3.0"
   },
