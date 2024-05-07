@@ -46,8 +46,7 @@
 <template>
     <footer class="main-footer">
         <div class="container-footer">
-            <div class="top-part">
-                <LogoLight class="logo-light" filled />
+            <LogoLight class="logo" filled />
                 <nav class="navigation">
                     <ul class="menu">
                         <li class="menu-item" v-for="item in nav">
@@ -57,24 +56,22 @@
                         </li>
                     </ul>
                 </nav>
-                <ul class="contact-info">
-                    <li class="contact-info-item" v-for="item in contacts">
-                        <PhoneIcon class="contact-info-icon" v-if="item.icon === 1" filled />
-                        <EmailIcon class="contact-info-icon" v-else-if="item.icon === 2" filled />
-                        <TagIcon class="contact-info-icon" v-else filled />
-                        <a class="contact-info-item-link" :href="item.url">
-                            {{  item.label }}
-                        </a>
-                    </li>
-                </ul>
-                <SendRequestButton class="send-request-button" />
+            <ul class="contacts">
+                <li class="contacts-item" v-for="item in contacts">
+                    <PhoneIcon class="contacts-icon" v-if="item.icon === 1" filled />
+                    <EmailIcon class="contacts-icon" v-else-if="item.icon === 2" filled />
+                    <TagIcon class="contacts-icon" v-else filled />
+                    <a class="contacts-item-link" :href="item.url">
+                        {{  item.label }}
+                    </a>
+                </li>
+            </ul>
+            <div class="button">
+                <SendRequestButton />
             </div>
-            
-            <div class="bottom-part">
-                <p class="copyright">© Загдом, 2021</p>
-                <a class="privacy" href="/privacy">Политика конфиденциальности</a>
-                <a class="users" href="/users">Пользовательское соглашение</a>
-            </div>
+            <p class="copyright">© Загдом, 2021</p>
+            <a class="privacy" href="/privacy">Политика конфиденциальности</a>
+            <a class="users" href="/users">Пользовательское соглашение</a>
         </div>
     </footer>
 </template>
@@ -108,69 +105,48 @@ $gap-inside-blocks: 24px;
     display: flex;
     justify-content: center;
     flex-shrink: 0;
-    height: 246px;
+    min-height: 246px;
     background-color: #254741;
     width: 100%;
-
-    @include for-phone-landscape-up {
-        height: 633px;
-    }
 }
 
 .container-footer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas: 
+    "logo navigation contacts button"
+    "copyright privacy users .";  
+    grid-gap: 32px;
     max-width: 1264px;
     width: 100%;
     padding-inline: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin: 37px 88px 33px 88px;
+    margin: 37px 88px;
+    padding-left: 0px;
+    padding-right: 0px;
 
     @include remove-margin {
         margin-left: 0px;
         margin-right: 0px;
+        padding-left: 16px;
+        padding-right: 16px;
     }
 
     @include for-phone-landscape-up {
-        gap: 40px;
-    }
-
-    @include for-phone-landscape-up {
+        grid-template-areas: 
+        "logo"
+        "navigation"
+        "contacts"
+        "button"
+        "copyright"
+        "privacy"
+        "users";
+        grid-gap: 40px;
         margin: 40px;
     }
 }
 
-.top-part
-{
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-
-    @include for-phone-landscape-up {
-        flex-direction: column;
-        gap: 16px;
-    }
-
-    @include for-phone-landscape-up {
-        gap: 40px;
-    }
-}
-
-.bottom-part {
-    display: flex;
-    align-items: center;
-    
-    @include for-phone-landscape-up {
-        flex-direction: column;
-        gap: 16px;
-    }
-
-    @include for-phone-landscape-up {
-        align-items: flex-start;
-    }
-}
-
-.logo-light {
+.logo {
+    grid-area: logo;
     height: 39px;
     width: 100%;
     max-width: 160px;
@@ -178,29 +154,32 @@ $gap-inside-blocks: 24px;
     @include add-margin-for-items-inside-top-part {
         margin-right: 20px;
     }
+}
 
-    @include for-phone-landscape-up {
-        margin-bottom: 0px;
-    }
+.navigation {
+    grid-area: navigation;
+}
+
+.contacts {
+    grid-area: contacts;
 }
 
 .menu,
-.contact-info {
+.contacts {
     list-style-type: none;
     gap: $gap-inside-blocks;
     display: flex;
     flex-direction: column;
     word-break: break-word;
     white-space: normal;
-    margin-left: 0px;
+    padding: 0;
 
     @include add-margin-for-items-inside-top-part {
         margin-right: 20px;
     }
 
     @include for-phone-landscape-up {
-        margin-top: 0px;
-        margin-bottom: 0px;
+        margin: 0;
     }    
 }
 
@@ -208,54 +187,60 @@ $gap-inside-blocks: 24px;
     @include link();
 }
 
-.contact-info-item-link {
+.contacts-item-link {
     @include link(14px);
     font-family: var(--font-title);
     white-space: pre-line;
 }
 
-.contact-info-item {
+.contacts-item {
     display: flex;
     gap: 8px;
     word-break: break-word;
     white-space: normal;
 }
 
-.contact-info-icon {
+.contacts-icon {
     width: 100%;
     max-width: 16px;
     height: 16px;
 }
 
-.send-request-button {
+.button {
+    grid-area: button;
     width: 100%;
     max-width: 204px;
+    justify-self: end;
+}
+
+.privacy {
+    grid-area: privacy;
+}
+
+.users {
+    grid-area: users;
 }
 
 .privacy,
 .users {
     @include link(14px);
-    opacity: 60%;
-}
+    color: rgba(white, 0.6);
 
-.privacy {
-    margin-right: 99px;
+    @include for-phone-landscape-up {
+        margin-top: -24px;
+    }
 }
 
 .copyright {
-    color: white;
-    opacity: 60%;
+    grid-area: copyright;
+    color: rgba(white, 0.6);
     font-size: 14px;
-    margin-right: 172px;
     white-space: nowrap;
+    margin: 0px;
 
     @include for-phone-landscape-up {
         margin-bottom: 0px;
         margin-top: 0px;
-    }
-
-    @include remove-margin {
-        margin-right: 80px;
     }
 }
 

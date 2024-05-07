@@ -1,7 +1,8 @@
 <script setup>
 import Slider from './Slider.vue'
-import AboutCompany from './AboutCompany.vue'
+import CompanyDescription from './CompanyDescription.vue'
 import Projects from './Projects.vue'
+import News from './News.vue'
 </script>
 
 <template>
@@ -11,20 +12,29 @@ import Projects from './Projects.vue'
                 <Slider />
             </div>
         </section>
-        <section class="about-company">
+        <section class="company-description">
             <div class="container">
-                <AboutCompany />
+                <CompanyDescription />
             </div>
         </section>
         <section class="projects">
-            <div class="containter">
-                <!-- <Projects /> -->
+            <div class="container">
+                <Projects />
+            </div>
+        </section>
+        <section class="news">
+            <div class="container">
+                <News />
             </div>
         </section>
     </main>
 </template>
 
 <style lang="scss" scoped>
+@mixin for-tablet-landscape-up {
+    @media (max-width: 1046px) { @content; }
+}
+
 .main-content {
     display: flex;
     flex-direction: column;
@@ -39,19 +49,32 @@ import Projects from './Projects.vue'
     max-width: 1264px;
     width: 100%;
     padding-inline: 1rem;
-    margin: 0px 88px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin: 40px 80px;
+
+    @include for-tablet-landscape-up {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
 }
 
-.about-company {
+.slider,
+.company-description,
+.projects,
+.news {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.company-description {
     margin-top: 80px;
 }
 
 .projects {
-    display: flex;
-    justify-content: center;
-    width: 100%;
     background-color: #F5F7F3;
     padding-block: 80px;
-    margin-top: 120px;
+    margin-top: 80px;
 }
 </style>

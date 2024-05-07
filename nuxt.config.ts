@@ -10,5 +10,6 @@ export default defineNuxtConfig({
       }
     }],
     'nuxt-swiper',
+    'truncate-html',
   ],
 })

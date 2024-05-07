@@ -12,11 +12,13 @@
   "dependencies": {
     "@csstools/normalize.css": "^12.1.1",
     "@radix-ui/themes": "^2.0.3",
+    "iconify": "^1.4.0",
     "nuxt": "^3.10.3",
     "nuxt-swiper": "^1.2.2",
-    "radix-vue": "^1.5.2",
+    "radix-vue": "^1.7.3",
     "reset-css": "^5.0.2",
     "sanitize.css": "^13.0.0",
+    "truncate-html": "^1.1.1",
     "vue": "^3.4.19",
     "vue-router": "^4.3.0"
   },

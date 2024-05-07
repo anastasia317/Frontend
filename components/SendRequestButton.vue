@@ -1,27 +1,22 @@
 <script setup lang="ts">
-import {
-  Toggle
-} from 'radix-vue'
+const dialogOpened = ref(false)
 </script>
 
 <template>
-  <Toggle
-      class="Button"
-    >
-      Оставить заявку
-  </Toggle>
+  <Dialog :open='dialogOpened' @close='dialogOpened = false' />
+   <button class="Button" @click='dialogOpened = true'>Оставить заявку</button>
 </template>
 
-<style>
+<style lang="scss" scoped>
+@import '~/assets/styles/button.scss';
+
 .Button {
   width: 204px;
   height: 49px;
-  border: none;
   border-radius: 10px;
-  border-color: #029f58;
   font-size: 14px;
   font-family: var(--font-title);
   color: white;
-  background-color: #029f58;
 }
+
 </style>

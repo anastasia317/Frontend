@@ -1,0 +1,23 @@
+.Button {
+    border: none;
+    background-color: #2B2F34;
+
+    &:disabled {
+        border: 1px solid #9D9C9C;
+    }
+
+    &:active {
+        border: none;
+        background-color: #029F59;
+    }
+
+    &:hover {
+        border: none;
+        background-color: #254741;
+    }
+
+    &:focus {
+        background-color: #254741;
+        border: 2px solid #029F59;
+    }
+}

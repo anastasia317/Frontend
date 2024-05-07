@@ -6,10 +6,10 @@ const swiper = useSwiper()
 
 <template>
    <button @click="swiper.slideNext()" class='next'>
-    <Arrow class="arrow-next" filled />
+    <Arrow class="arrow-next" />
    </button>
    <button @click="swiper.slidePrev()" class='prev'>
-    <Arrow class="arrow-prev" filled />
+    <Arrow class="arrow-prev" />
    </button>
    <div class='pagination'>
       <button
@@ -24,18 +24,26 @@ const swiper = useSwiper()
 </template>
 
 <style lang="scss" scoped>
+@import '~/assets/styles/button-arrow.scss';
+
+@mixin hide-slider-controls {
+    @media (max-width: 767px) { @content; }
+}
+
 .next, 
 .prev {
     position: absolute;
     z-index: 1;
-    border: none;
     width: 48px;
     height: 48px;
     padding: 0;
     top: 50%;
     border-radius: 10px;
-    background-color: #029F59;
     cursor: pointer;
+
+    @include hide-slider-controls {
+        display: none;
+    }
 }
 
 .prev {
@@ -59,6 +67,10 @@ const swiper = useSwiper()
     z-index: 1;
     display: flex;
     gap: 16px;
+
+    @include hide-slider-controls {
+        display: none;
+    }
 }
 
 .pagination-button {
