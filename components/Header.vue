@@ -30,9 +30,9 @@
                 <nav class="navigation">
                     <ul class="menu">
                         <li class="menu-item" v-for="item in nav">
-                            <a class="item-link" :href="item.url">
+                            <NuxtLink class="item-link" :to="item.url">
                                 {{  item.label }}
-                            </a>
+                            </NuxtLink>
                         </li>
                     </ul>
                 </nav>
@@ -144,6 +144,10 @@ $gap-inside-blocks: 24px;
 
 .item-link {
     @include link;
+
+    &:focus {
+        color: #029F59;
+    }
 }
 
 .phone-number {

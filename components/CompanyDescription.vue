@@ -18,21 +18,21 @@ const statistic_information = [
 
 <template>
   <div class="information-block">
-    <div class="company-description">
-      <p class="title">Каждый проект для нас — важный</p>
+    <article class="company-description">
+      <h1 class="title">Каждый проект для нас — важный</h1>
       <p class="text">Мы строительная компания полного цикла.</p>
       <p class="text">
         Вникаем во все детали, разрабатываем планировку будущего дома,
         продумываем конструктивные решения и общую архитектурную концепцию
       </p>
-    </div>
+    </article>
     <div class="blocks">
-      <div class="info-block" v-for="statistic in statistic_information">
+      <article class="info-block" v-for="statistic in statistic_information">
         <House class="info-block-icon" v-if="statistic.icon === 1" filled />
         <Calendar class="info-block-icon" v-else filled />
         <p class="numerical-information">{{ statistic.info }}</p>
         <p class="info-block-text">{{ statistic.text }}</p>
-      </div>
+      </article>
     </div>
   </div>
 </template>

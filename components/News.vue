@@ -7,6 +7,7 @@ import article3_image_1x from '~/assets/images/article-3.jpg'
 import article3_image_2x from '~/assets/images/article-3@2x.jpg'
 import article4_image_1x from '~/assets/images/article-4.jpg'
 import article4_image_2x from '~/assets/images/article-4@2x.jpg'
+import NewsArticlePreview from './NewsArticlePreview.vue'
 
 const articles = [
     {
@@ -54,8 +55,8 @@ const articles = [
 <template>
     <section class="news-list">
         <header class='news-list-header'>
-           <h2 class='news-list-title'>Новости</h2>
-           <a href='/news' class='Button'>Все новости</a>
+           <h1 class='news-list-title'>Новости</h1>
+           <NuxtLink to='/news' class='Button'>Все новости</NuxtLink>
        </header>
        <ul class='news-list-list'>
            <li v-for='article in articles' class='news-list-article'>
@@ -72,7 +73,7 @@ const articles = [
 <style lang="scss" scoped>
 @import '~/assets/styles/button.scss';
 
-h2 {
+h1 {
     margin: 0;
 }
 

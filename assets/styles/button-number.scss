@@ -1,0 +1,29 @@
+.button-number {
+    background-color: #FFFFFF;
+    border: 1px solid  #9D9C9C;
+    color: #254741;
+
+    &:hover {
+        background-color: #EDEFF2;
+        color: #029F59;
+        border: 1px solid #029F59;
+    }
+
+    &:active {
+        background-color: #254741;
+        border: none;
+        color: #FFFFFF;
+    }
+
+    &:focus {
+        background-color: #EEEEEE;
+        color: #9D9C9C;
+        border: 1px solid #9D9C9C;
+    }
+
+    &:disabled {
+        background-color: #FAFAFA;
+        color: #D7D7D7;
+        border: 1px solid #D7D7D7;
+    }
+}
