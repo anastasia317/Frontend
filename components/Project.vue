@@ -10,7 +10,7 @@ defineProps({
 </script>
 
 <template>
-    <div class='project'>
+    <article class='project'>
       <div class="pic">
          <picture>
             <source :srcset='`${image.x2} 2x, ${image.x1}`'>
@@ -21,7 +21,7 @@ defineProps({
             <p class="discription" v-html='description' />
          </div>
       </div>
-    </div>
+   </article>
  </template>
 
 <style lang="scss" scoped>

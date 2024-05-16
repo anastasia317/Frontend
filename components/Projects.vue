@@ -29,7 +29,7 @@ const projects = [
 
 <template>
   <div class="projects-wrapper">
-    <p class="title">Реализованные проекты</p>
+    <h1 class="title">Реализованные проекты</h1>
     <div class="list">
       <Project
         v-for="project in projects"
