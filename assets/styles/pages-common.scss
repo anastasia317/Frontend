@@ -1,0 +1,25 @@
+ul,
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
+.page-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  flex-grow: 1;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1264px;
+}
+
+.title {
+  font-family: var(--font-title);
+  font-size: 46px;
+  font-weight: bold;
+}
