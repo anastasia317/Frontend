@@ -10,9 +10,13 @@ import {
   YandexMapOpenMapsButton,
   YandexMapGeolocationControl,
 } from "vue-yandex-maps";
+
 import LocationMark from "~/assets/icons/location_mark.svg";
+import type { YMapLocationRequest } from '@yandex/ymaps3-types/imperative/YMap';
+import type { YMap } from '@yandex/ymaps3-types';
 
 const isFullscreen = ref(false);
+const timedCounter = ref(1);
 
 const map = shallowRef<YMap | null>(null);
 
@@ -28,6 +32,24 @@ const toggleFullscreen = () => {
     map.value!.container.requestFullscreen();
   }
 };
+
+onMounted(() => {
+  const handleFullscreenChange = async () => {
+    isFullscreen.value = !!document.fullscreenElement;
+  };
+
+  document.addEventListener('fullscreenchange', handleFullscreenChange);
+
+  const interval = setInterval(() => {
+    timedCounter.value++;
+    if (timedCounter.value > 99) timedCounter.value = 0;
+  }, 1000);
+
+  onBeforeUnmount(() => {
+    clearInterval(interval);
+    document.removeEventListener('fullscreenchange', handleFullscreenChange);
+  });
+});
 </script>
 
 <template>
