@@ -21,7 +21,7 @@ const timedCounter = ref(1);
 const map = shallowRef<YMap | null>(null);
 
 const LOCATION: YMapLocationRequest = {
-  center: [131.924416, 43.116247], 
+  center: [131.952463, 43.149011], 
   zoom: 11, 
 };
 
