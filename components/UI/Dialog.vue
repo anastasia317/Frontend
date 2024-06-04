@@ -2,12 +2,10 @@
 import {
   DialogClose,
   DialogContent,
-  DialogDescription,
   DialogOverlay,
   DialogPortal,
   DialogRoot,
   DialogTitle,
-  DialogTrigger,
 } from 'radix-vue'
 import { Icon } from '@iconify/vue'
 
@@ -21,53 +19,37 @@ const emit = defineEmits(['close'])
   <DialogRoot :open='open'>
     <DialogPortal>
       <DialogOverlay class="DialogOverlay" />
-      <DialogContent
-        class="DialogContent"
-      >
+      <DialogContent class="DialogContent">
+          <DialogClose class="IconButton" aria-label="Close" @click="emit('close')">
+              <Icon icon="lucide:x" />
+            </DialogClose>
         <DialogTitle class="DialogTitle">
-          Edit profile
+          Оставить заявку
         </DialogTitle>
-        <DialogDescription class="DialogDescription">
-          Make changes to your profile here. Click save when you're done.
-        </DialogDescription>
         <fieldset class="Fieldset">
-          <label class="Label" for="name"> Name </label>
-          <input
-            id="name"
-            class="Input"
-            defaultValue="Pedro Duarte"
-          >
+          <input id="name" class="Input" placeholder="Имя">
         </fieldset>
         <fieldset class="Fieldset">
-          <label class="Label" for="username"> Username </label>
-          <input
-            id="username"
-            class="Input"
-            defaultValue="@peduarte"
-          >
+          <input id="telephone" class="Input" placeholder="Телефон">
         </fieldset>
-        <div :style="{ display: 'flex', marginTop: 25, justifyContent: 'flex-end' }">
+        <fieldset class="Fieldset">
+          <input id="message" class="Input Message" placeholder="Сообщение">
+        </fieldset>
+        <div class="application-form">
           <DialogClose as-child>
-            <button
-              class="Button green"
-            >
-              Save changes
-            </button>
+            <button class="Button green" type="submit"> Оставить заявку </button>
           </DialogClose>
+          <p class="terms-text">
+            Нажимая на кнопку «Отправить», вы <br/> принимаете <span class="text-green">пользовательское соглашение</span><br/> 
+            и <span class="text-green">политику конфиденциальности</span>
+          </p>
         </div>
-        <DialogClose
-          class="IconButton"
-          aria-label="Close"
-          @click="emit('close')"
-        >
-          <Icon icon="lucide:x" />
-        </DialogClose>
       </DialogContent>
     </DialogPortal>
   </DialogRoot>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 @import '@radix-ui/colors/black-alpha.css';
 @import '@radix-ui/colors/green.css';
 @import '@radix-ui/colors/mauve.css';
@@ -80,8 +62,14 @@ input {
   all: unset;
 }
 
+@mixin for-phone {
+  @media (max-width: 790px) {
+    @content;
+  }
+}
+
 .DialogOverlay {
-  background-color: var(--black-a9);
+  background-color: rgba(0, 0, 0, 0.4);
   position: fixed;
   inset: 0;
   animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -89,96 +77,75 @@ input {
 }
 
 .DialogContent {
-  background-color: white;
+  background-color: #F5F7F3;
   border-radius: 6px;
   box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 90vw;
-  max-width: 450px;
-  max-height: 85vh;
-  padding: 25px;
+  max-width: 353px;
+  min-height: 499px;
   animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 2;
+  padding: 48px 47px 56px 48px;
+
+  @include for-phone {
+    padding-bottom: 32px;
+  }
 }
 .DialogContent:focus {
   outline: none;
 }
 
 .DialogTitle {
-  margin: 0;
-  font-weight: 500;
-  color: var(--mauve-12);
-  font-size: 17px;
-}
+  margin-bottom: 0px;
+  font-weight: 700;
+  font-size: 32px;
+  font-family: var(--font-title);
+  color: #2B2F34;
 
-.DialogDescription {
-  margin: 10px 0 20px;
-  color: var(--mauve-11);
-  font-size: 15px;
-  line-height: 1.5;
+  @include for-phone {
+    font-size: 24px;
+  }
 }
 
 .Button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 4px;
-  padding: 0 15px;
-  font-size: 15px;
-  line-height: 1;
-  font-weight: 500;
-  height: 35px;
-}
-.Button.grass {
-  background-color: white;
-  color: var(--grass-11);
-  box-shadow: 0 2px 10px var(--black-a7);
-}
-.Button.grass:hover {
-  background-color: var(--mauve-3);
-}
-.Button.grass:focus {
-  box-shadow: 0 0 0 2px black;
+  border-radius: 10px;
+  padding: 16px 40px;
+  font-size: 14px;
+  font-family: var(--font-title);
+  line-height: 17.07px;
+  font-weight: 500; 
+  width: 124px;
+  margin-top: 32px;
 }
 .Button.green {
-  background-color: var(--green-4);
-  color: var(--green-11);
-}
-.Button.green:hover {
-  background-color: var(--green-5);
-}
-.Button.green:focus {
-  box-shadow: 0 0 0 2px var(--green-7);
+  background-color: #029F59;
+  color: white;
 }
 
 .IconButton {
   font-family: inherit;
-  border-radius: 100%;
-  height: 25px;
-  width: 25px;
+  border-radius: 6px;
+  height: 32px;
+  width: 32px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--grass-11);
+  color: #029F59;
+  background-color: rgba(70, 157, 96, .2);
   position: absolute;
-  top: 10px;
-  right: 10px;
-}
-.IconButton:hover {
-  background-color: var(--grass-4);
-}
-.IconButton:focus {
-  box-shadow: 0 0 0 2px var(--grass-7);
+  top: 24px;
+  right: 24px;
 }
 
 .Fieldset {
   display: flex;
-  gap: 20px;
   align-items: center;
-  margin-bottom: 15px;
 }
 
 .Label {
@@ -189,21 +156,25 @@ input {
 }
 
 .Input {
+  background-color: #FFFFFF;
   width: 100%;
   flex: 1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 4px;
-  padding: 0 10px;
-  font-size: 15px;
+  border-radius: 5px;
+  padding: 16px;
+  font-size: 14px;
+  font-family: var(--font-title);
   line-height: 1;
-  color: var(--grass-11);
-  box-shadow: 0 0 0 1px var(--grass-7);
-  height: 35px;
+  color: #9D9C9C;
+  height: 25px;
+  line-height: 25.2px;
+  margin-top: 24px;
 }
-.Input:focus {
-  box-shadow: 0 0 0 2px var(--grass-8);
+
+.Input.Message {
+  padding-bottom: 58px;
 }
 
 @keyframes overlayShow {
@@ -224,5 +195,24 @@ input {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
   }
+}
+
+.application-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
+.terms-text {
+  color: #757E8D;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 16px;
+  line-height: 21px;
+}
+
+.text-green {
+  color: #029F59;
 }
 </style>
