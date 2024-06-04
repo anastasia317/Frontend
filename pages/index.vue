@@ -1,8 +1,8 @@
 <script setup>
-import Slider from '~/components/Slider.vue'
-import CompanyDescription from '~/components/CompanyDescription.vue'
-import Projects from '~/components/Projects.vue'
-import News from '~/components/News.vue'
+import Slider from '~/components/main-page/Slider.vue'
+import CompanyDescription from '~/components/main-page/CompanyDescription.vue'
+import Projects from '~/components/main-page/Projects.vue'
+import News from '~/components/main-page/News.vue'
 </script>
 
 <template>

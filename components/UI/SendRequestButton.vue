@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import Dialog from './Dialog.vue';
+
 const dialogOpened = ref(false)
 </script>
 

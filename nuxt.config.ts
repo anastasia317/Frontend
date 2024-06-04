@@ -11,5 +11,9 @@ export default defineNuxtConfig({
     }],
     'nuxt-swiper',
     'truncate-html',
+    'vue-yandex-maps/nuxt',
   ],
+  yandexMaps: {
+    apikey: process.env.YANDEX_MAPS_API_KEY,
+ },
 })
